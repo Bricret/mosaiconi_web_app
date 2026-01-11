@@ -16,8 +16,11 @@ import { ROUTES } from "./route";
 import { NavMain } from "./nav-main";
 import { NavSecondary } from "./nav-secondary";
 import { NavUser } from "./nav-user";
+import { usePathname } from "next/navigation";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname();
+
   return (
     <Sidebar collapsible="offExamples" {...props}>
       <SidebarHeader>
@@ -44,7 +47,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={ROUTES.navMain} />
+        <NavMain items={ROUTES.navMain} pathname={pathname} />
         <NavSecondary items={ROUTES.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

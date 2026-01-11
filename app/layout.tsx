@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Figtree, Poppins } from "next/font/google";
+import { Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/presentation/components/theme-provider";
+import { ConvexClientProvider } from "@/presentation/components/ConvexClientProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ConvexClientProvider>{children}</ConvexClientProvider>
         </ThemeProvider>
       </body>
     </html>

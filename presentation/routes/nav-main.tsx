@@ -14,12 +14,14 @@ import Link from "next/link";
 
 export function NavMain({
   items,
+  pathname,
 }: {
   items: {
     title: string;
     url: string;
     icon?: LucideIcon;
   }[];
+  pathname: string;
 }) {
   return (
     <SidebarGroup>
@@ -30,7 +32,9 @@ export function NavMain({
               <Link
                 href={item.url}
                 className={cn(
-                  sidebarMenuButtonVariants({ variant: "default" })
+                  sidebarMenuButtonVariants({ variant: "default" }),
+                  pathname === item.url &&
+                    "bg-sidebar-accent text-sidebar-accent-foreground"
                 )}
               >
                 {item.icon && <item.icon />}
